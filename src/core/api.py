@@ -102,17 +102,22 @@ from core.config import (
     DEFAULT_GROUNDED_ANSWER_POLICY,
     DEFAULT_GROUNDED_GENERATION_OPTIONS,
 )
-from pipeline.rag_pipeline import (
-    DocumentConverter,
-    TextChunker,
-    Embedder,
-    Retriever,
-    CrossEncoderReranker,
-    IntentAnalyzer,
-)
-from pipeline.rag_pipeline.quality_gates import QualityGates
-from pipeline.rag_pipeline.grounded_qa import GroundedQAClient, run_grounded_query
-from pipeline.rag_pipeline.query_contract import ErrorDetail, normalize_grounded_query_response_payload
+
+# Import lightweight modules that don't trigger ML library loads
+from pipeline.rag_pipeline.query_contract import ErrorDetail
+
+# Import these lazily to defer PyTorch/sentence-transformers loading
+# from pipeline.rag_pipeline import (
+#     DocumentConverter,
+#     TextChunker,
+#     Embedder,
+#     Retriever,
+#     CrossEncoderReranker,
+#     IntentAnalyzer,
+# )
+# from pipeline.rag_pipeline.quality_gates import QualityGates
+# from pipeline.rag_pipeline.grounded_qa import GroundedQAClient, run_grounded_query
+# from pipeline.rag_pipeline.query_contract import ErrorDetail, normalize_grounded_query_response_payload
 
 # Setup logging
 logger = setup_logger(__name__, API_LOG_FILE)
@@ -327,35 +332,144 @@ All responses include metadata, intent analysis, and cross-encoder scores for tr
     ],
 )
 
-# Initialize pipeline components
-logger.info("Initializing RAG pipeline components...")
-converter = DocumentConverter()
-logger.info("✓ DocumentConverter initialized")
+# Initialize pipeline components with lazy loading for all components
+logger.info("Initializing RAG pipeline components (lazy loading)...")
 
-chunker = TextChunker(chunk_size=CHUNK_SIZE, overlap=CHUNK_OVERLAP)
-logger.info(f"✓ TextChunker initialized (chunk_size={CHUNK_SIZE}, overlap={CHUNK_OVERLAP})")
+# All components initialized lazily to defer PyTorch/ML imports
+converter = None
+chunker = None
+embedder = None
+retriever = None
+reranker = None
+intent_analyzer = None
+quality_gates = None
+grounded_qa_client = None
 
-embedder = Embedder(model_name="all-MiniLM-L6-v2")
-logger.info("✓ Embedder initialized (all-MiniLM-L6-v2)")
+def initialize_converter():
+    """Lazy initialize document converter on first use."""
+    global converter
+    if converter is None:
+        try:
+            from pipeline.rag_pipeline import DocumentConverter
+            converter = DocumentConverter()
+            logger.info("✓ DocumentConverter initialized")
+        except Exception as e:
+            logger.error(f"✗ Failed to initialize DocumentConverter: {e}")
+            raise
+    return converter
 
-retriever = Retriever(persist_dir=str(CHROMA_DB_DIR), collection_name="documents")
-logger.info(f"✓ Retriever initialized (persist_dir={CHROMA_DB_DIR})")
+def initialize_chunker():
+    """Lazy initialize text chunker on first use."""
+    global chunker
+    if chunker is None:
+        try:
+            from pipeline.rag_pipeline import TextChunker
+            chunker = TextChunker(chunk_size=CHUNK_SIZE, overlap=CHUNK_OVERLAP)
+            logger.info(f"✓ TextChunker initialized (chunk_size={CHUNK_SIZE}, overlap={CHUNK_OVERLAP})")
+        except Exception as e:
+            logger.error(f"✗ Failed to initialize TextChunker: {e}")
+            raise
+    return chunker
 
-reranker = CrossEncoderReranker(model_name="cross-encoder/ms-marco-MiniLM-L-12-v2")
-logger.info("✓ CrossEncoderReranker initialized")
+def initialize_embedder():
+    """Lazy initialize embedder on first use."""
+    global embedder
+    if embedder is None:
+        try:
+            from pipeline.rag_pipeline import Embedder
+            embedder = Embedder(model_name="all-MiniLM-L6-v2")
+            logger.info("✓ Embedder initialized (all-MiniLM-L6-v2)")
+        except Exception as e:
+            logger.error(f"✗ Failed to initialize Embedder: {e}")
+            raise
+    return embedder
 
-grounded_qa_client = GroundedQAClient(
-    base_url=COPILOT_API_BASE_URL,
-    endpoint=GROUNDED_QA_ENDPOINT,
-)
-logger.info(f"✓ GroundedQAClient initialized ({COPILOT_API_BASE_URL}{GROUNDED_QA_ENDPOINT})")
+def initialize_retriever():
+    """Lazy initialize retriever on first use."""
+    global retriever
+    if retriever is None:
+        try:
+            from pipeline.rag_pipeline import Retriever
+            retriever = Retriever(persist_dir=str(CHROMA_DB_DIR), collection_name="documents")
+            logger.info(f"✓ Retriever initialized (persist_dir={CHROMA_DB_DIR})")
+        except Exception as e:
+            logger.error(f"✗ Failed to initialize Retriever: {e}")
+            raise
+    return retriever
 
-intent_analyzer = IntentAnalyzer()
-logger.info("✓ IntentAnalyzer initialized")
+def initialize_reranker():
+    """Lazy initialize reranker on first use."""
+    global reranker
+    if reranker is None:
+        try:
+            from pipeline.rag_pipeline import CrossEncoderReranker
+            reranker = CrossEncoderReranker(model_name="cross-encoder/ms-marco-MiniLM-L-12-v2")
+            logger.info("✓ CrossEncoderReranker initialized")
+        except Exception as e:
+            logger.error(f"✗ Failed to initialize CrossEncoderReranker: {e}")
+            raise
+    return reranker
 
-# Quality gates for runtime checks (used for abstention fallback)
-quality_gates = QualityGates()
-logger.info("✓ QualityGates initialized")
+def initialize_intent_analyzer():
+    """Lazy initialize intent analyzer on first use."""
+    global intent_analyzer
+    if intent_analyzer is None:
+        try:
+            from pipeline.rag_pipeline import IntentAnalyzer
+            intent_analyzer = IntentAnalyzer()
+            logger.info("✓ IntentAnalyzer initialized")
+        except Exception as e:
+            logger.error(f"✗ Failed to initialize IntentAnalyzer: {e}")
+            raise
+    return intent_analyzer
+
+def initialize_quality_gates():
+    """Lazy initialize quality gates on first use."""
+    global quality_gates
+    if quality_gates is None:
+        try:
+            from pipeline.rag_pipeline.quality_gates import QualityGates
+            quality_gates = QualityGates()
+            logger.info("✓ QualityGates initialized")
+        except Exception as e:
+            logger.error(f"✗ Failed to initialize QualityGates: {e}")
+            raise
+    return quality_gates
+
+def initialize_grounded_qa_client():
+    """Lazy initialize grounded QA client on first use."""
+    global grounded_qa_client
+    if grounded_qa_client is None:
+        try:
+            from pipeline.rag_pipeline.grounded_qa import GroundedQAClient
+            grounded_qa_client = GroundedQAClient(
+                base_url=COPILOT_API_BASE_URL,
+                endpoint=GROUNDED_QA_ENDPOINT,
+            )
+            logger.info(f"✓ GroundedQAClient initialized ({COPILOT_API_BASE_URL}{GROUNDED_QA_ENDPOINT})")
+        except Exception as e:
+            logger.error(f"✗ Failed to initialize GroundedQAClient: {e}")
+            raise
+    return grounded_qa_client
+
+def get_run_grounded_query():
+    """Lazy import run_grounded_query function."""
+    try:
+        from pipeline.rag_pipeline.grounded_qa import run_grounded_query
+        return run_grounded_query
+    except Exception as e:
+        logger.error(f"✗ Failed to import run_grounded_query: {e}")
+        raise
+
+def get_normalize_response_payload():
+    """Lazy import normalize_grounded_query_response_payload function."""
+    try:
+        from pipeline.rag_pipeline.query_contract import normalize_grounded_query_response_payload
+        return normalize_grounded_query_response_payload
+    except Exception as e:
+        logger.error(f"✗ Failed to import normalize_grounded_query_response_payload: {e}")
+        raise
+    return grounded_qa_client
 
 # Track processed documents
 processed_docs: List[str] = []
@@ -368,11 +482,14 @@ processed_docs: List[str] = []
 def update_intent_baseline():
     """Update the intent analyzer baseline with current KB documents."""
     try:
+        _retriever = initialize_retriever()
+        _intent_analyzer = initialize_intent_analyzer()
+        
         # Get current collection stats
-        stats = retriever.get_collection_stats()
+        stats = _retriever.get_collection_stats()
         if stats.get("count", 0) > 0:
             # Build baseline from processed documents
-            intent_analyzer.build_baseline(processed_docs)
+            _intent_analyzer.build_baseline(processed_docs)
             logger.info(f"Intent baseline updated: {len(processed_docs)} documents")
     except Exception as e:
         logger.error(f"Error updating intent baseline: {e}", exc_info=True)
@@ -385,12 +502,18 @@ def ingest_document(source_type: str, source: str, doc_id: Optional[str]) -> tup
     Returns:
         Tuple of (doc_id, chunks_added)
     """
+    # Initialize lazy components
+    _converter = initialize_converter()
+    _chunker = initialize_chunker()
+    _embedder = initialize_embedder()
+    _retriever = initialize_retriever()
+    
     # Convert document to markdown
     logger.info(f"Converting {source_type}: {source}")
     if source_type == "url":
-        markdown_content = converter.convert_url(source)
+        markdown_content = _converter.convert_url(source)
     else:
-        markdown_content = converter.convert_file(source)
+        markdown_content = _converter.convert_file(source)
 
     if not markdown_content:
         logger.error(f"Failed to convert {source}")
@@ -407,7 +530,7 @@ def ingest_document(source_type: str, source: str, doc_id: Optional[str]) -> tup
 
     # Chunk the content
     logger.info(f"Chunking document: {doc_id}")
-    chunks = chunker.chunk(markdown_content, method="sentences")
+    chunks = _chunker.chunk(markdown_content, method="sentences")
 
     if not chunks:
         logger.warning(f"No chunks generated for {doc_id}")
@@ -417,7 +540,7 @@ def ingest_document(source_type: str, source: str, doc_id: Optional[str]) -> tup
 
     # Embed chunks
     logger.info(f"Embedding {len(chunks)} chunks")
-    embeddings = embedder.embed_texts(chunks)
+    embeddings = _embedder.embed_texts(chunks)
     logger.info(f"Successfully embedded {len(embeddings)} chunks")
 
     # Prepare metadata
@@ -436,7 +559,7 @@ def ingest_document(source_type: str, source: str, doc_id: Optional[str]) -> tup
 
     # Store in vector DB (pass embeddings to prevent ChromaDB from trying to download models)
     logger.info(f"Storing {len(chunks)} chunks in vector DB")
-    retriever.add_documents(
+    _retriever.add_documents(
         documents=chunks,
         embeddings=embeddings,
         metadatas=metadatas,
@@ -559,6 +682,18 @@ async def query(request: QueryRequest):
     - If KB is small, query results may be limited
     """
     try:
+        # Lazy initialize ML components
+        _intent_analyzer = initialize_intent_analyzer()
+        _embedder = initialize_embedder()
+        _retriever = initialize_retriever()
+        _reranker = initialize_reranker()
+        _qa_client = initialize_grounded_qa_client()
+        _quality_gates = initialize_quality_gates()
+        
+        # Lazy import functions
+        run_grounded_query = get_run_grounded_query()
+        normalize_grounded_query_response_payload = get_normalize_response_payload()
+        
         request_id = request.request_id or f"qa_{uuid.uuid4().hex}"
         model_requested = request.model or DEFAULT_GROUNDED_MODEL
         answer_policy = request.answer_policy if request.answer_policy is not None else DEFAULT_GROUNDED_ANSWER_POLICY
@@ -568,12 +703,12 @@ async def query(request: QueryRequest):
             query=request.query,
             top_k=request.top_k,
             rerank_top_k=request.rerank_top_k,
-            intent_analyzer=intent_analyzer,
-            embedder=embedder,
-            retriever=retriever,
-            reranker=reranker,
-            qa_client=grounded_qa_client,
-            quality_gates=quality_gates,
+            intent_analyzer=_intent_analyzer,
+            embedder=_embedder,
+            retriever=_retriever,
+            reranker=_reranker,
+            qa_client=_qa_client,
+            quality_gates=_quality_gates,
             request_id=request_id,
             model=model_requested,
             answer_policy=answer_policy,
@@ -617,8 +752,11 @@ async def status():
     - Get an overview of KB topics to ensure relevant documents exist
     """
     try:
-        stats = retriever.get_collection_stats()
-        baseline_info = intent_analyzer.get_baseline_info()
+        _retriever = initialize_retriever()
+        _intent_analyzer = initialize_intent_analyzer()
+        
+        stats = _retriever.get_collection_stats()
+        baseline_info = _intent_analyzer.get_baseline_info()
 
         return StatusResponse(
             status="ready",

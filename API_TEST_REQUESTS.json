@@ -1,0 +1,268 @@
+{
+  "api_testing_requests": {
+    "description": "Pre-built test requests for RAG Pipeline API - Copy-paste into Swagger UI",
+    "base_url": "http://localhost:8001",
+    "swagger_url": "http://localhost:8001/docs",
+    
+    "phase_1_verification": {
+      "description": "System verification - run these first",
+      "tests": [
+        {
+          "name": "1. Get API Info",
+          "method": "GET",
+          "endpoint": "/",
+          "description": "Verify API is running and get overview"
+        },
+        {
+          "name": "2. Check Status (Empty KB)",
+          "method": "GET",
+          "endpoint": "/api/status",
+          "description": "Should show 0 documents initially"
+        }
+      ]
+    },
+
+    "phase_2_single_ingestion": {
+      "description": "Ingest first document and test queries",
+      "tests": [
+        {
+          "name": "3. Ingest Machine Learning Basics",
+          "method": "POST",
+          "endpoint": "/api/ingest",
+          "request_body": {
+            "source_type": "file",
+            "source": "./sample_docs/machine_learning_basics.md",
+            "doc_id": "ml_basics_001"
+          },
+          "expected_response": "success with chunk count"
+        },
+        {
+          "name": "4. Check Status (1 Document)",
+          "method": "GET",
+          "endpoint": "/api/status",
+          "description": "Should show 1 document and ML-related topics"
+        }
+      ]
+    },
+
+    "phase_3_queries_ml": {
+      "description": "Test queries after ML ingestion",
+      "tests": [
+        {
+          "name": "Q1: What is machine learning?",
+          "method": "POST",
+          "endpoint": "/api/query",
+          "request_body": {
+            "query": "What is machine learning?",
+            "top_k": 5,
+            "rerank_top_k": 3
+          }
+        },
+        {
+          "name": "Q2: What are the types of machine learning?",
+          "method": "POST",
+          "endpoint": "/api/query",
+          "request_body": {
+            "query": "What are the types of machine learning?",
+            "top_k": 5,
+            "rerank_top_k": 3
+          }
+        },
+        {
+          "name": "Q3: What are machine learning applications?",
+          "method": "POST",
+          "endpoint": "/api/query",
+          "request_body": {
+            "query": "What are machine learning applications?",
+            "top_k": 5,
+            "rerank_top_k": 3
+          }
+        }
+      ]
+    },
+
+    "phase_4_progressive_ingestion": {
+      "description": "Ingest more documents",
+      "tests": [
+        {
+          "name": "5. Ingest Deep Learning Guide",
+          "method": "POST",
+          "endpoint": "/api/ingest",
+          "request_body": {
+            "source_type": "file",
+            "source": "./sample_docs/deep_learning_guide.md",
+            "doc_id": "dl_guide_001"
+          }
+        },
+        {
+          "name": "6. Ingest NLP Fundamentals",
+          "method": "POST",
+          "endpoint": "/api/ingest",
+          "request_body": {
+            "source_type": "file",
+            "source": "./sample_docs/nlp_fundamentals.md",
+            "doc_id": "nlp_fundamentals_001"
+          }
+        }
+      ]
+    },
+
+    "phase_5_comprehensive_queries": {
+      "description": "Test comprehensive queries across all documents",
+      "deep_learning_queries": [
+        {
+          "name": "Q4: What is deep learning?",
+          "method": "POST",
+          "endpoint": "/api/query",
+          "request_body": {
+            "query": "What is deep learning?",
+            "top_k": 5,
+            "rerank_top_k": 3
+          }
+        },
+        {
+          "name": "Q5: What are neural networks?",
+          "method": "POST",
+          "endpoint": "/api/query",
+          "request_body": {
+            "query": "What are neural networks and how do they work?",
+            "top_k": 5,
+            "rerank_top_k": 3
+          }
+        },
+        {
+          "name": "Q6: How do we train neural networks?",
+          "method": "POST",
+          "endpoint": "/api/query",
+          "request_body": {
+            "query": "How do we train neural networks?",
+            "top_k": 5,
+            "rerank_top_k": 3
+          }
+        }
+      ],
+      "nlp_queries": [
+        {
+          "name": "Q7: What is natural language processing?",
+          "method": "POST",
+          "endpoint": "/api/query",
+          "request_body": {
+            "query": "What is natural language processing?",
+            "top_k": 5,
+            "rerank_top_k": 3
+          }
+        },
+        {
+          "name": "Q8: What are NLP applications?",
+          "method": "POST",
+          "endpoint": "/api/query",
+          "request_body": {
+            "query": "What are the applications of natural language processing?",
+            "top_k": 5,
+            "rerank_top_k": 3
+          }
+        }
+      ],
+      "comparison_queries": [
+        {
+          "name": "Q9: Explain differences between ML and AI",
+          "method": "POST",
+          "endpoint": "/api/query",
+          "request_body": {
+            "query": "What is the difference between machine learning and artificial intelligence?",
+            "top_k": 5,
+            "rerank_top_k": 3
+          }
+        },
+        {
+          "name": "Q10: Explain differences between ML and DL",
+          "method": "POST",
+          "endpoint": "/api/query",
+          "request_body": {
+            "query": "What is the difference between machine learning and deep learning?",
+            "top_k": 5,
+            "rerank_top_k": 3
+          }
+        }
+      ],
+      "edge_case_queries": [
+        {
+          "name": "Q11: Query about non-existent topic",
+          "method": "POST",
+          "endpoint": "/api/query",
+          "request_body": {
+            "query": "What is quantum computing and how does it relate to machine learning?",
+            "top_k": 5,
+            "rerank_top_k": 3
+          },
+          "note": "May return empty or low-confidence answer"
+        },
+        {
+          "name": "Q12: Very specific technical question",
+          "method": "POST",
+          "endpoint": "/api/query",
+          "request_body": {
+            "query": "Explain backpropagation in neural networks",
+            "top_k": 5,
+            "rerank_top_k": 3
+          }
+        }
+      ]
+    },
+
+    "phase_6_batch_operations": {
+      "description": "Test batch ingestion",
+      "tests": [
+        {
+          "name": "7. Batch Ingest All Files",
+          "method": "POST",
+          "endpoint": "/api/ingest-batch",
+          "content_type": "multipart/form-data",
+          "files": [
+            "machine_learning_basics.md",
+            "deep_learning_guide.md",
+            "nlp_fundamentals.md"
+          ],
+          "instructions": "In Swagger: Click 'Try it out' → Select files → Execute"
+        }
+      ]
+    },
+
+    "response_interpretation": {
+      "query_response_fields": {
+        "request_id": "Unique ID for this query",
+        "query": "Your original question",
+        "answer": "LLM-generated answer grounded in KB",
+        "context_chunks": {
+          "text": "Retrieved document chunk",
+          "metadata": {
+            "source": "Which file it came from",
+            "chunk_id": "Chunk number within file"
+          },
+          "distance": "Vector similarity - LOWER is better (0.0-0.3 excellent, 0.3-0.6 good, 0.6+ poor)",
+          "cross_encoder_score": "Re-ranking confidence - HIGHER is better (>0.8 excellent, 0.5-0.8 good, <0.5 poor)"
+        },
+        "intent_analysis": {
+          "is_relevant": "Is the query relevant to KB content?",
+          "keywords": "Extracted keywords from query",
+          "confidence": "How confident is the relevance check?"
+        },
+        "retrieval_relevant": "Whether any relevant chunks were found",
+        "retrieval_sufficient": "Whether enough context was found to answer",
+        "llm_api_used": "Whether LLM was successfully invoked",
+        "success": "Overall query success"
+      }
+    },
+
+    "testing_tips": [
+      "Start with Phase 1 to verify the API is running",
+      "Ingest documents in Phase 2-4 before testing queries",
+      "Use Swagger UI (/docs) for easiest interactive testing",
+      "Check context_chunks to verify sources - important for grounding!",
+      "Compare distance and cross_encoder_score - they should correlate",
+      "Test edge cases (Q11-Q12) to understand system limitations",
+      "Monitor response times - first query from each doc is slower (embedding generation)",
+      "Batch ingestion is faster than single ingestion for multiple files"
+    ]
+  }
+}

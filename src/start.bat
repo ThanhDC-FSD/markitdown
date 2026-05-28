@@ -54,7 +54,7 @@ REM Step 2: Create sample documents
 echo.
 echo [2] Creating sample documents...
 set "PYTHONPATH=%SCRIPT_DIR%"
-python -m core.crawler --mode sample --output ./sample_docs
+"%VENV_DIR%\Scripts\python.exe" -m core.crawler --mode sample --output ./sample_docs
 if %errorlevel% equ 0 (
     echo     [OK] Sample documents created
 ) else (
@@ -74,6 +74,6 @@ echo     Press Ctrl+C to stop the server
 echo.
 
 set "PYTHONPATH=%SCRIPT_DIR%"
-python -m uvicorn core.api:app --reload --host 0.0.0.0 --port 8001
+"%VENV_DIR%\Scripts\python.exe" -m uvicorn core.api:app --reload --host 0.0.0.0 --port 8001
 
 pause
