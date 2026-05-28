@@ -1,0 +1,14 @@
+{
+  "cases": [
+    {
+      "name": "current_grounding_summary_schema_mismatch",
+      "query": "Why are internet based clients important in the Cloud Age?",
+      "mode": "both",
+      "top_k": 5,
+      "rerank_top_k": 3,
+      "model": "gpt-5-mini",
+      "expected_failure_class": "response_schema_mismatch",
+      "notes": "Current failing case reported by the user."
+    }
+  ]
+}

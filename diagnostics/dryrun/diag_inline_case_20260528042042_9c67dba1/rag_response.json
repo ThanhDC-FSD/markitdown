@@ -1,0 +1,30 @@
+{
+  "label": "rag",
+  "request": {
+    "timestamp": "2026-05-28T04:20:42.844476+00:00",
+    "request_id": "diag_inline_case_20260528042042_9c67dba1",
+    "url": "http://127.0.0.1:8001/api/query",
+    "headers": {
+      "accept": "application/json",
+      "content-type": "application/json",
+      "x-request-id": "diag_inline_case_20260528042042_9c67dba1",
+      "x-correlation-id": "diag_inline_case_20260528042042_9c67dba1",
+      "x-diagnostic-request-id": "diag_inline_case_20260528042042_9c67dba1"
+    },
+    "body": {
+      "query": "Why are internet based clients important in the Cloud Age?",
+      "top_k": 5,
+      "rerank_top_k": 3,
+      "request_id": "diag_inline_case_20260528042042_9c67dba1"
+    }
+  },
+  "response": {
+    "timestamp": "2026-05-28T04:20:42.844484+00:00",
+    "status_code": null,
+    "headers": {},
+    "raw_text": "",
+    "parsed_json": null,
+    "json_parse_error": null,
+    "error": "HTTPConnectionPool(host='localhost', port=3128): Read timed out. (read timeout=5.0)"
+  }
+}

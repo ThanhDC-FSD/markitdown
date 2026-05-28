@@ -148,6 +148,27 @@ venv.bak/
 .dmypy.json
 dmypy.json
 
+# Vector Database - DO NOT COMMIT
+chroma_db/
+test_chroma_simple/
+
+# Test files - temporary
+test_*.py
+check_*.py
+debug_*.py
+mock_llm_server.py
+evaluation_*.json
+
+# Diagnostic output
+diagnostics/grounded_qa_runs/
+
+# API startup scripts
+start_api.ps1
+start_api.sh
+
+# Office files
+*.pptx
+
 # Pyre type checker
 .pyre/
 

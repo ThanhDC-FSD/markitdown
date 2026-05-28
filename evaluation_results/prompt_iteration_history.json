@@ -1,0 +1,20 @@
+[
+  {
+    "timestamp": "20260528_092747",
+    "report_path": "evaluation_results\\evaluation_report_20260528_092747.json",
+    "summary": {
+      "total_cases": 1,
+      "passed_cases": 1,
+      "failed_cases": 0,
+      "critical_failures": 0,
+      "hallucination_failures": 0,
+      "false_abstentions": 0,
+      "kb_relevance_false_negatives": 0,
+      "average_grounding_score": 0.9166666666666666,
+      "average_expectation_coverage": 1.0,
+      "average_domain_consistency": 1.0,
+      "iteration_count": 1,
+      "final_status": "incomplete"
+    }
+  }
+]

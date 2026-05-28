@@ -1,7 +1,6 @@
 from typing import Any, BinaryIO
 
 from ._exiftool import exiftool_metadata
-from ._transcribe_audio import transcribe_audio
 from .._base_converter import DocumentConverter, DocumentConverterResult
 from .._stream_info import StreamInfo
 from .._exceptions import MissingDependencyException
@@ -91,6 +90,10 @@ class AudioConverter(DocumentConverter):
         # Transcribe
         if audio_format:
             try:
+                # Import transcription function lazily to avoid pulling in optional
+                # heavy deps (pydub/speech_recognition) at module import time.
+                from ._transcribe_audio import transcribe_audio
+
                 transcript = transcribe_audio(file_stream, audio_format=audio_format)
                 if transcript:
                     md_content += "\n\n### Audio Transcript:\n" + transcript

@@ -1,0 +1,1224 @@
+[
+  {
+    "query": "What is the main goal of AUTOSAR?",
+    "before": {
+      "query": "What is the main goal of AUTOSAR?",
+      "answer_text": "AUTOSAR is an open and standardized automotive software architecture that enables software transferability, reduces development costs, and improves the ability to reuse components across different ECU platforms and vehicle variants.",
+      "components": [
+        {
+          "statement": "AUTOSAR is an open and standardized automotive software architecture that enables software transferability, reduces development costs, and improves the ability to reuse components across different ECU platforms and vehicle variants.",
+          "component_type": "definition",
+          "citations": [
+            {
+              "chunk_id": "chunk_001",
+              "chunk_content": "autosar is an open and standardized automotive software architecture. it enables software transferability across different ecu platforms. the main goal is to standardize the interface between applicat",
+              "confidence_score": 0.92,
+              "semantic_similarity": 0.88,
+              "metadata_domain": "AUTOSAR",
+              "page_ref": "1"
+            },
+            {
+              "chunk_id": "chunk_002",
+              "chunk_content": "autosar was created to address fragmentation caused by multiple automotive manufacturers having incompatible proprietary software stacks. this standardization enables code reuse and reduces developmen",
+              "confidence_score": 0.89,
+              "semantic_similarity": 0.86,
+              "metadata_domain": "AUTOSAR",
+              "page_ref": "2"
+            },
+            {
+              "chunk_id": "chunk_003",
+              "chunk_content": "the high costs of platform-specific development and difficulty in sharing components across different vehicle variants were key problems. autosar addresses these through standardized interfaces.",
+              "confidence_score": 0.87,
+              "semantic_similarity": 0.84,
+              "metadata_domain": "AUTOSAR",
+              "page_ref": "3"
+            }
+          ],
+          "verification_status": "verified",
+          "confidence_score": 0.8933333333333334,
+          "is_contradicted": false,
+          "contradiction_evidence": null
+        }
+      ],
+      "overall_status": "partial",
+      "quality_score": 0.7786666666666667,
+      "completeness_score": 0.3333333333333333,
+      "accuracy_score": 1.0,
+      "timestamp": "2026-05-27T13:53:23.276769",
+      "quality_gates_passed": {
+        "min_confidence": true,
+        "min_quality_score": true,
+        "min_completeness": false,
+        "no_contradictions": true,
+        "sufficient_evidence": false
+      },
+      "warnings": [],
+      "suggestions": [
+        "Answer may not fully address all query aspects. Consider expanding coverage."
+      ]
+    },
+    "after": {
+      "query": "What is the main goal of AUTOSAR?",
+      "answer_text": "AUTOSAR aims to establish an open and standardized software architecture for automotive ECUs, enabling:\n\u2022 Software transferability across platforms\n\u2022 Maintainability and safety improvements\n\u2022 Support for multiple vehicle variants\n\u2022 Reduced development costs through component reuse",
+      "components": [
+        {
+          "statement": "AUTOSAR aims to establish an open and standardized software architecture for automotive ECUs, enabling:",
+          "component_type": "definition",
+          "citations": [
+            {
+              "chunk_id": "chunk_001",
+              "chunk_content": "autosar is an open and standardized automotive software architecture. it enables software transferability across different ecu platforms. the main goal is to standardize the interface between applicat",
+              "confidence_score": 0.92,
+              "semantic_similarity": 0.88,
+              "metadata_domain": "AUTOSAR",
+              "page_ref": "1"
+            },
+            {
+              "chunk_id": "chunk_002",
+              "chunk_content": "autosar was created to address fragmentation caused by multiple automotive manufacturers having incompatible proprietary software stacks. this standardization enables code reuse and reduces developmen",
+              "confidence_score": 0.89,
+              "semantic_similarity": 0.86,
+              "metadata_domain": "AUTOSAR",
+              "page_ref": "2"
+            },
+            {
+              "chunk_id": "chunk_004",
+              "chunk_content": "a standardized software architecture enables portability and reduces development time. it improves quality across the automotive industry by establishing common practices and verification methods.",
+              "confidence_score": 0.85,
+              "semantic_similarity": 0.81,
+              "metadata_domain": "AUTOSAR",
+              "page_ref": "4"
+            }
+          ],
+          "verification_status": "verified",
+          "confidence_score": 0.8866666666666667,
+          "is_contradicted": false,
+          "contradiction_evidence": null
+        },
+        {
+          "statement": "Software transferability across platforms",
+          "component_type": "fact",
+          "citations": [
+            {
+              "chunk_id": "chunk_001",
+              "chunk_content": "autosar is an open and standardized automotive software architecture. it enables software transferability across different ecu platforms. the main goal is to standardize the interface between applicat",
+              "confidence_score": 0.92,
+              "semantic_similarity": 0.88,
+              "metadata_domain": "AUTOSAR",
+              "page_ref": "1"
+            },
+            {
+              "chunk_id": "chunk_004",
+              "chunk_content": "a standardized software architecture enables portability and reduces development time. it improves quality across the automotive industry by establishing common practices and verification methods.",
+              "confidence_score": 0.85,
+              "semantic_similarity": 0.81,
+              "metadata_domain": "AUTOSAR",
+              "page_ref": "4"
+            }
+          ],
+          "verification_status": "verified",
+          "confidence_score": 0.885,
+          "is_contradicted": false,
+          "contradiction_evidence": null
+        },
+        {
+          "statement": "Maintainability and safety improvements",
+          "component_type": "benefit",
+          "citations": [],
+          "verification_status": "insufficient_evidence",
+          "confidence_score": 0.0,
+          "is_contradicted": false,
+          "contradiction_evidence": null
+        },
+        {
+          "statement": "Support for multiple vehicle variants",
+          "component_type": "fact",
+          "citations": [
+            {
+              "chunk_id": "chunk_003",
+              "chunk_content": "the high costs of platform-specific development and difficulty in sharing components across different vehicle variants were key problems. autosar addresses these through standardized interfaces.",
+              "confidence_score": 0.87,
+              "semantic_similarity": 0.84,
+              "metadata_domain": "AUTOSAR",
+              "page_ref": "3"
+            }
+          ],
+          "verification_status": "verified",
+          "confidence_score": 0.87,
+          "is_contradicted": false,
+          "contradiction_evidence": null
+        },
+        {
+          "statement": "Reduced development costs through component reuse",
+          "component_type": "benefit",
+          "citations": [
+            {
+              "chunk_id": "chunk_002",
+              "chunk_content": "autosar was created to address fragmentation caused by multiple automotive manufacturers having incompatible proprietary software stacks. this standardization enables code reuse and reduces developmen",
+              "confidence_score": 0.89,
+              "semantic_similarity": 0.86,
+              "metadata_domain": "AUTOSAR",
+              "page_ref": "2"
+            },
+            {
+              "chunk_id": "chunk_003",
+              "chunk_content": "the high costs of platform-specific development and difficulty in sharing components across different vehicle variants were key problems. autosar addresses these through standardized interfaces.",
+              "confidence_score": 0.87,
+              "semantic_similarity": 0.84,
+              "metadata_domain": "AUTOSAR",
+              "page_ref": "3"
+            }
+          ],
+          "verification_status": "verified",
+          "confidence_score": 0.88,
+          "is_contradicted": false,
+          "contradiction_evidence": null
+        }
+      ],
+      "overall_status": "verified",
+      "quality_score": 0.7508666666666667,
+      "completeness_score": 0.6666666666666666,
+      "accuracy_score": 0.8,
+      "timestamp": "2026-05-27T13:53:23.277249",
+      "quality_gates_passed": {
+        "min_confidence": true,
+        "min_quality_score": true,
+        "min_completeness": true,
+        "no_contradictions": true,
+        "sufficient_evidence": true
+      },
+      "warnings": [
+        "Component 'Maintainability and safety improvements...' has no supporting evidence"
+      ],
+      "suggestions": [
+        "Review warnings above. Some components may need refinement or additional sources."
+      ]
+    },
+    "improvement": {
+      "quality_delta": -0.027800000000000047,
+      "completeness_delta": 0.3333333333333333,
+      "components_added": 4
+    }
+  },
+  {
+    "query": "Why was AUTOSAR created?",
+    "before": {
+      "query": "Why was AUTOSAR created?",
+      "answer_text": "Multiple automotive manufacturers faced challenges with incompatible software stacks. AUTOSAR was created to standardize the interface between application software and basic software, enabling code reuse and reducing development complexity.",
+      "components": [
+        {
+          "statement": "Multiple automotive manufacturers faced challenges with incompatible software stacks.",
+          "component_type": "fact",
+          "citations": [
+            {
+              "chunk_id": "chunk_002",
+              "chunk_content": "autosar was created to address fragmentation caused by multiple automotive manufacturers having incompatible proprietary software stacks. this standardization enables code reuse and reduces developmen",
+              "confidence_score": 0.89,
+              "semantic_similarity": 0.86,
+              "metadata_domain": "AUTOSAR",
+              "page_ref": "2"
+            }
+          ],
+          "verification_status": "verified",
+          "confidence_score": 0.89,
+          "is_contradicted": false,
+          "contradiction_evidence": null
+        },
+        {
+          "statement": "AUTOSAR was created to standardize the interface between application software and basic software, enabling code reuse and reducing development complexity.",
+          "component_type": "fact",
+          "citations": [
+            {
+              "chunk_id": "chunk_001",
+              "chunk_content": "autosar is an open and standardized automotive software architecture. it enables software transferability across different ecu platforms. the main goal is to standardize the interface between applicat",
+              "confidence_score": 0.92,
+              "semantic_similarity": 0.88,
+              "metadata_domain": "AUTOSAR",
+              "page_ref": "1"
+            },
+            {
+              "chunk_id": "chunk_002",
+              "chunk_content": "autosar was created to address fragmentation caused by multiple automotive manufacturers having incompatible proprietary software stacks. this standardization enables code reuse and reduces developmen",
+              "confidence_score": 0.89,
+              "semantic_similarity": 0.86,
+              "metadata_domain": "AUTOSAR",
+              "page_ref": "2"
+            }
+          ],
+          "verification_status": "verified",
+          "confidence_score": 0.905,
+          "is_contradicted": false,
+          "contradiction_evidence": null
+        }
+      ],
+      "overall_status": "verified",
+      "quality_score": 0.9794999999999999,
+      "completeness_score": 1.0,
+      "accuracy_score": 1.0,
+      "timestamp": "2026-05-27T13:53:23.278047",
+      "quality_gates_passed": {
+        "min_confidence": true,
+        "min_quality_score": true,
+        "min_completeness": true,
+        "no_contradictions": true,
+        "sufficient_evidence": true
+      },
+      "warnings": [],
+      "suggestions": []
+    },
+    "after": {
+      "query": "Why was AUTOSAR created?",
+      "answer_text": "AUTOSAR was created to address fragmentation caused by:\n1. Incompatible proprietary stacks from different OEMs\n2. High costs due to platform-specific development\n3. Difficulty in sharing components across variants\n4. Safety and quality concerns from inconsistent approaches\n5. Need for faster time-to-market",
+      "components": [
+        {
+          "statement": "AUTOSAR was created to address fragmentation caused by:",
+          "component_type": "reason",
+          "citations": [
+            {
+              "chunk_id": "chunk_002",
+              "chunk_content": "autosar was created to address fragmentation caused by multiple automotive manufacturers having incompatible proprietary software stacks. this standardization enables code reuse and reduces developmen",
+              "confidence_score": 0.89,
+              "semantic_similarity": 0.86,
+              "metadata_domain": "AUTOSAR",
+              "page_ref": "2"
+            }
+          ],
+          "verification_status": "verified",
+          "confidence_score": 0.89,
+          "is_contradicted": false,
+          "contradiction_evidence": null
+        },
+        {
+          "statement": "Incompatible proprietary stacks from different OEMs\n2.",
+          "component_type": "fact",
+          "citations": [],
+          "verification_status": "insufficient_evidence",
+          "confidence_score": 0.0,
+          "is_contradicted": false,
+          "contradiction_evidence": null
+        },
+        {
+          "statement": "High costs due to platform",
+          "component_type": "reason",
+          "citations": [
+            {
+              "chunk_id": "chunk_003",
+              "chunk_content": "the high costs of platform-specific development and difficulty in sharing components across different vehicle variants were key problems. autosar addresses these through standardized interfaces.",
+              "confidence_score": 0.87,
+              "semantic_similarity": 0.84,
+              "metadata_domain": "AUTOSAR",
+              "page_ref": "3"
+            }
+          ],
+          "verification_status": "verified",
+          "confidence_score": 0.87,
+          "is_contradicted": false,
+          "contradiction_evidence": null
+        },
+        {
+          "statement": "specific development\n3.",
+          "component_type": "fact",
+          "citations": [
+            {
+              "chunk_id": "chunk_002",
+              "chunk_content": "autosar was created to address fragmentation caused by multiple automotive manufacturers having incompatible proprietary software stacks. this standardization enables code reuse and reduces developmen",
+              "confidence_score": 0.89,
+              "semantic_similarity": 0.86,
+              "metadata_domain": "AUTOSAR",
+              "page_ref": "2"
+            },
+            {
+              "chunk_id": "chunk_005",
+              "chunk_content": "autosar improves ecu development by standardizing interfaces and providing reusable components. it reduces complexity and enables efficient scaling for multi-core systems.",
+              "confidence_score": 0.88,
+              "semantic_similarity": 0.85,
+              "metadata_domain": "AUTOSAR",
+              "page_ref": "5"
+            },
+            {
+              "chunk_id": "chunk_003",
+              "chunk_content": "the high costs of platform-specific development and difficulty in sharing components across different vehicle variants were key problems. autosar addresses these through standardized interfaces.",
+              "confidence_score": 0.87,
+              "semantic_similarity": 0.84,
+              "metadata_domain": "AUTOSAR",
+              "page_ref": "3"
+            }
+          ],
+          "verification_status": "verified",
+          "confidence_score": 0.88,
+          "is_contradicted": false,
+          "contradiction_evidence": null
+        },
+        {
+          "statement": "Difficulty in sharing components across variants\n4.",
+          "component_type": "fact",
+          "citations": [
+            {
+              "chunk_id": "chunk_003",
+              "chunk_content": "the high costs of platform-specific development and difficulty in sharing components across different vehicle variants were key problems. autosar addresses these through standardized interfaces.",
+              "confidence_score": 0.87,
+              "semantic_similarity": 0.84,
+              "metadata_domain": "AUTOSAR",
+              "page_ref": "3"
+            }
+          ],
+          "verification_status": "verified",
+          "confidence_score": 0.87,
+          "is_contradicted": false,
+          "contradiction_evidence": null
+        },
+        {
+          "statement": "Safety and quality concerns from inconsistent approaches\n5.",
+          "component_type": "definition",
+          "citations": [],
+          "verification_status": "insufficient_evidence",
+          "confidence_score": 0.0,
+          "is_contradicted": false,
+          "contradiction_evidence": null
+        },
+        {
+          "statement": "Need for faster time",
+          "component_type": "fact",
+          "citations": [],
+          "verification_status": "insufficient_evidence",
+          "confidence_score": 0.0,
+          "is_contradicted": false,
+          "contradiction_evidence": null
+        }
+      ],
+      "overall_status": "partial",
+      "quality_score": 0.6988571428571428,
+      "completeness_score": 1.0,
+      "accuracy_score": 0.5714285714285714,
+      "timestamp": "2026-05-27T13:53:23.278495",
+      "quality_gates_passed": {
+        "min_confidence": false,
+        "min_quality_score": false,
+        "min_completeness": true,
+        "no_contradictions": true,
+        "sufficient_evidence": true
+      },
+      "warnings": [
+        "Component 'Incompatible proprietary stacks from different OEM...' has no supporting evidence",
+        "Component 'Safety and quality concerns from inconsistent appr...' has no supporting evidence",
+        "Component 'Need for faster time...' has no supporting evidence"
+      ],
+      "suggestions": [
+        "Add more specific citations. Current confidence: 0.50",
+        "Review warnings above. Some components may need refinement or additional sources."
+      ]
+    },
+    "improvement": {
+      "quality_delta": -0.2806428571428571,
+      "completeness_delta": 0.0,
+      "components_added": 5
+    }
+  },
+  {
+    "query": "What problem does AUTOSAR try to solve?",
+    "before": {
+      "query": "What problem does AUTOSAR try to solve?",
+      "answer_text": "AUTOSAR solves the software architecture fragmentation problem in automotive industry by providing a standardized interface and common practices.",
+      "components": [
+        {
+          "statement": "AUTOSAR solves the software architecture fragmentation problem in automotive industry by providing a standardized interface and common practices.",
+          "component_type": "fact",
+          "citations": [
+            {
+              "chunk_id": "chunk_001",
+              "chunk_content": "autosar is an open and standardized automotive software architecture. it enables software transferability across different ecu platforms. the main goal is to standardize the interface between applicat",
+              "confidence_score": 0.92,
+              "semantic_similarity": 0.88,
+              "metadata_domain": "AUTOSAR",
+              "page_ref": "1"
+            },
+            {
+              "chunk_id": "chunk_002",
+              "chunk_content": "autosar was created to address fragmentation caused by multiple automotive manufacturers having incompatible proprietary software stacks. this standardization enables code reuse and reduces developmen",
+              "confidence_score": 0.89,
+              "semantic_similarity": 0.86,
+              "metadata_domain": "AUTOSAR",
+              "page_ref": "2"
+            },
+            {
+              "chunk_id": "chunk_004",
+              "chunk_content": "a standardized software architecture enables portability and reduces development time. it improves quality across the automotive industry by establishing common practices and verification methods.",
+              "confidence_score": 0.85,
+              "semantic_similarity": 0.81,
+              "metadata_domain": "AUTOSAR",
+              "page_ref": "4"
+            }
+          ],
+          "verification_status": "verified",
+          "confidence_score": 0.8866666666666667,
+          "is_contradicted": false,
+          "contradiction_evidence": null
+        }
+      ],
+      "overall_status": "partial",
+      "quality_score": 0.9023333333333333,
+      "completeness_score": 0.75,
+      "accuracy_score": 1.0,
+      "timestamp": "2026-05-27T13:53:23.279408",
+      "quality_gates_passed": {
+        "min_confidence": true,
+        "min_quality_score": true,
+        "min_completeness": true,
+        "no_contradictions": true,
+        "sufficient_evidence": false
+      },
+      "warnings": [],
+      "suggestions": []
+    },
+    "after": {
+      "query": "What problem does AUTOSAR try to solve?",
+      "answer_text": "AUTOSAR addresses multiple problems:\nTECHNICAL FRAGMENTATION - proprietary architectures, no interoperability, difficult component sharing\nDEVELOPMENT INEFFICIENCY - high costs, platform-specific adaptations, limited code reuse\nQUALITY & SAFETY - inconsistent standards, security challenges, testing complexity\nBUSINESS AGILITY - slow market response, expensive feature additions, long time-to-market",
+      "components": [
+        {
+          "statement": "AUTOSAR addresses multiple problems:",
+          "component_type": "fact",
+          "citations": [
+            {
+              "chunk_id": "chunk_002",
+              "chunk_content": "autosar was created to address fragmentation caused by multiple automotive manufacturers having incompatible proprietary software stacks. this standardization enables code reuse and reduces developmen",
+              "confidence_score": 0.89,
+              "semantic_similarity": 0.86,
+              "metadata_domain": "AUTOSAR",
+              "page_ref": "2"
+            },
+            {
+              "chunk_id": "chunk_003",
+              "chunk_content": "the high costs of platform-specific development and difficulty in sharing components across different vehicle variants were key problems. autosar addresses these through standardized interfaces.",
+              "confidence_score": 0.87,
+              "semantic_similarity": 0.84,
+              "metadata_domain": "AUTOSAR",
+              "page_ref": "3"
+            }
+          ],
+          "verification_status": "verified",
+          "confidence_score": 0.88,
+          "is_contradicted": false,
+          "contradiction_evidence": null
+        },
+        {
+          "statement": "TECHNICAL FRAGMENTATION",
+          "component_type": "fact",
+          "citations": [
+            {
+              "chunk_id": "chunk_002",
+              "chunk_content": "autosar was created to address fragmentation caused by multiple automotive manufacturers having incompatible proprietary software stacks. this standardization enables code reuse and reduces developmen",
+              "confidence_score": 0.89,
+              "semantic_similarity": 0.86,
+              "metadata_domain": "AUTOSAR",
+              "page_ref": "2"
+            }
+          ],
+          "verification_status": "verified",
+          "confidence_score": 0.89,
+          "is_contradicted": false,
+          "contradiction_evidence": null
+        },
+        {
+          "statement": "proprietary architectures, no interoperability, difficult component sharing\nDEVELOPMENT INEFFICIENCY",
+          "component_type": "fact",
+          "citations": [],
+          "verification_status": "insufficient_evidence",
+          "confidence_score": 0.0,
+          "is_contradicted": true,
+          "contradiction_evidence": [
+            "Reduce development costs through component reuse"
+          ]
+        },
+        {
+          "statement": "high costs, platform",
+          "component_type": "fact",
+          "citations": [
+            {
+              "chunk_id": "chunk_003",
+              "chunk_content": "the high costs of platform-specific development and difficulty in sharing components across different vehicle variants were key problems. autosar addresses these through standardized interfaces.",
+              "confidence_score": 0.87,
+              "semantic_similarity": 0.84,
+              "metadata_domain": "AUTOSAR",
+              "page_ref": "3"
+            }
+          ],
+          "verification_status": "verified",
+          "confidence_score": 0.87,
+          "is_contradicted": false,
+          "contradiction_evidence": null
+        },
+        {
+          "statement": "specific adaptations, limited code reuse\nQUALITY & SAFETY",
+          "component_type": "fact",
+          "citations": [],
+          "verification_status": "insufficient_evidence",
+          "confidence_score": 0.0,
+          "is_contradicted": false,
+          "contradiction_evidence": null
+        },
+        {
+          "statement": "inconsistent standards, security challenges, testing complexity\nBUSINESS AGILITY",
+          "component_type": "definition",
+          "citations": [],
+          "verification_status": "insufficient_evidence",
+          "confidence_score": 0.0,
+          "is_contradicted": false,
+          "contradiction_evidence": null
+        },
+        {
+          "statement": "slow market response, expensive feature additions, long time",
+          "component_type": "fact",
+          "citations": [],
+          "verification_status": "insufficient_evidence",
+          "confidence_score": 0.0,
+          "is_contradicted": false,
+          "contradiction_evidence": null
+        }
+      ],
+      "overall_status": "unverified",
+      "quality_score": 0.39685714285714285,
+      "completeness_score": 0.5,
+      "accuracy_score": 0.42857142857142855,
+      "timestamp": "2026-05-27T13:53:23.279625",
+      "quality_gates_passed": {
+        "min_confidence": false,
+        "min_quality_score": false,
+        "min_completeness": false,
+        "no_contradictions": false,
+        "sufficient_evidence": true
+      },
+      "warnings": [
+        "Component 'proprietary architectures, no interoperability, di...' has no supporting evidence",
+        "Component 'specific adaptations, limited code reuse\nQUALITY &...' has no supporting evidence",
+        "Component 'inconsistent standards, security challenges, testi...' has no supporting evidence",
+        "Component 'slow market response, expensive feature additions,...' has no supporting evidence",
+        "Component may contradict known fact: AUTOSAR reduces development costs through component reuse",
+        "Component may contradict known fact: Resolve fragmentation from incompatible proprietary stacks",
+        "Component may contradict known fact: Reduce high development costs of platform-specific code",
+        "Component may contradict known fact: Technical fragmentation from proprietary architectures",
+        "Component may contradict known fact: Development inefficiency due to platform-specific adaptations",
+        "Component may contradict known fact: Business agility constraints from long development cycles",
+        "Component may contradict known fact: Component sharing difficulties across different platforms",
+        "Component may contradict known fact: Reduce development costs through component reuse"
+      ],
+      "suggestions": [
+        "Add more specific citations. Current confidence: 0.38",
+        "Answer may not fully address all query aspects. Consider expanding coverage.",
+        "Review warnings above. Some components may need refinement or additional sources."
+      ]
+    },
+    "improvement": {
+      "quality_delta": -0.5054761904761904,
+      "completeness_delta": -0.25,
+      "components_added": 6
+    }
+  },
+  {
+    "query": "What is the purpose of a standardized software architecture in AUTOSAR?",
+    "before": {
+      "query": "What is the purpose of a standardized software architecture in AUTOSAR?",
+      "answer_text": "A standardized software architecture enables portability, reduces development time, and improves quality across the automotive industry.",
+      "components": [
+        {
+          "statement": "A standardized software architecture enables portability, reduces development time, and improves quality across the automotive industry.",
+          "component_type": "benefit",
+          "citations": [
+            {
+              "chunk_id": "chunk_001",
+              "chunk_content": "autosar is an open and standardized automotive software architecture. it enables software transferability across different ecu platforms. the main goal is to standardize the interface between applicat",
+              "confidence_score": 0.92,
+              "semantic_similarity": 0.88,
+              "metadata_domain": "AUTOSAR",
+              "page_ref": "1"
+            },
+            {
+              "chunk_id": "chunk_002",
+              "chunk_content": "autosar was created to address fragmentation caused by multiple automotive manufacturers having incompatible proprietary software stacks. this standardization enables code reuse and reduces developmen",
+              "confidence_score": 0.89,
+              "semantic_similarity": 0.86,
+              "metadata_domain": "AUTOSAR",
+              "page_ref": "2"
+            },
+            {
+              "chunk_id": "chunk_005",
+              "chunk_content": "autosar improves ecu development by standardizing interfaces and providing reusable components. it reduces complexity and enables efficient scaling for multi-core systems.",
+              "confidence_score": 0.88,
+              "semantic_similarity": 0.85,
+              "metadata_domain": "AUTOSAR",
+              "page_ref": "5"
+            }
+          ],
+          "verification_status": "verified",
+          "confidence_score": 0.8966666666666666,
+          "is_contradicted": false,
+          "contradiction_evidence": null
+        }
+      ],
+      "overall_status": "partial",
+      "quality_score": 0.8593333333333334,
+      "completeness_score": 0.6,
+      "accuracy_score": 1.0,
+      "timestamp": "2026-05-27T13:53:23.280422",
+      "quality_gates_passed": {
+        "min_confidence": true,
+        "min_quality_score": true,
+        "min_completeness": true,
+        "no_contradictions": true,
+        "sufficient_evidence": false
+      },
+      "warnings": [],
+      "suggestions": []
+    },
+    "after": {
+      "query": "What is the purpose of a standardized software architecture in AUTOSAR?",
+      "answer_text": "The purpose is to:\n1. ENABLE SOFTWARE TRANSFERABILITY - write once, execute on multiple ECU platforms, minimize platform-specific code\n2. IMPROVE MAINTAINABILITY - consistent interfaces, easier updates, standardized practices\n3. SUPPORT MULTIPLE VARIANTS - single codebase, efficient configuration, reduce total code\n4. ENSURE SAFETY & QUALITY - standardized verification, easier compliance, improved testing\n5. REDUCE DEVELOPMENT COSTS - component reuse, shared infrastructure, lower training",
+      "components": [
+        {
+          "statement": "The purpose is to:",
+          "component_type": "definition",
+          "citations": [
+            {
+              "chunk_id": "chunk_001",
+              "chunk_content": "autosar is an open and standardized automotive software architecture. it enables software transferability across different ecu platforms. the main goal is to standardize the interface between applicat",
+              "confidence_score": 0.92,
+              "semantic_similarity": 0.88,
+              "metadata_domain": "AUTOSAR",
+              "page_ref": "1"
+            }
+          ],
+          "verification_status": "verified",
+          "confidence_score": 0.92,
+          "is_contradicted": false,
+          "contradiction_evidence": null
+        },
+        {
+          "statement": "ENABLE SOFTWARE TRANSFERABILITY",
+          "component_type": "benefit",
+          "citations": [
+            {
+              "chunk_id": "chunk_001",
+              "chunk_content": "autosar is an open and standardized automotive software architecture. it enables software transferability across different ecu platforms. the main goal is to standardize the interface between applicat",
+              "confidence_score": 0.92,
+              "semantic_similarity": 0.88,
+              "metadata_domain": "AUTOSAR",
+              "page_ref": "1"
+            },
+            {
+              "chunk_id": "chunk_002",
+              "chunk_content": "autosar was created to address fragmentation caused by multiple automotive manufacturers having incompatible proprietary software stacks. this standardization enables code reuse and reduces developmen",
+              "confidence_score": 0.89,
+              "semantic_similarity": 0.86,
+              "metadata_domain": "AUTOSAR",
+              "page_ref": "2"
+            },
+            {
+              "chunk_id": "chunk_004",
+              "chunk_content": "a standardized software architecture enables portability and reduces development time. it improves quality across the automotive industry by establishing common practices and verification methods.",
+              "confidence_score": 0.85,
+              "semantic_similarity": 0.81,
+              "metadata_domain": "AUTOSAR",
+              "page_ref": "4"
+            }
+          ],
+          "verification_status": "verified",
+          "confidence_score": 0.8866666666666667,
+          "is_contradicted": false,
+          "contradiction_evidence": null
+        },
+        {
+          "statement": "write once, execute on multiple ECU platforms, minimize platform",
+          "component_type": "fact",
+          "citations": [],
+          "verification_status": "insufficient_evidence",
+          "confidence_score": 0.0,
+          "is_contradicted": false,
+          "contradiction_evidence": null
+        },
+        {
+          "statement": "specific code\n2.",
+          "component_type": "fact",
+          "citations": [
+            {
+              "chunk_id": "chunk_002",
+              "chunk_content": "autosar was created to address fragmentation caused by multiple automotive manufacturers having incompatible proprietary software stacks. this standardization enables code reuse and reduces developmen",
+              "confidence_score": 0.89,
+              "semantic_similarity": 0.86,
+              "metadata_domain": "AUTOSAR",
+              "page_ref": "2"
+            }
+          ],
+          "verification_status": "verified",
+          "confidence_score": 0.89,
+          "is_contradicted": false,
+          "contradiction_evidence": null
+        },
+        {
+          "statement": "IMPROVE MAINTAINABILITY",
+          "component_type": "benefit",
+          "citations": [],
+          "verification_status": "insufficient_evidence",
+          "confidence_score": 0.0,
+          "is_contradicted": false,
+          "contradiction_evidence": null
+        },
+        {
+          "statement": "consistent interfaces, easier updates, standardized practices\n3.",
+          "component_type": "definition",
+          "citations": [],
+          "verification_status": "insufficient_evidence",
+          "confidence_score": 0.0,
+          "is_contradicted": false,
+          "contradiction_evidence": null
+        },
+        {
+          "statement": "SUPPORT MULTIPLE VARIANTS",
+          "component_type": "fact",
+          "citations": [
+            {
+              "chunk_id": "chunk_002",
+              "chunk_content": "autosar was created to address fragmentation caused by multiple automotive manufacturers having incompatible proprietary software stacks. this standardization enables code reuse and reduces developmen",
+              "confidence_score": 0.89,
+              "semantic_similarity": 0.86,
+              "metadata_domain": "AUTOSAR",
+              "page_ref": "2"
+            },
+            {
+              "chunk_id": "chunk_003",
+              "chunk_content": "the high costs of platform-specific development and difficulty in sharing components across different vehicle variants were key problems. autosar addresses these through standardized interfaces.",
+              "confidence_score": 0.87,
+              "semantic_similarity": 0.84,
+              "metadata_domain": "AUTOSAR",
+              "page_ref": "3"
+            }
+          ],
+          "verification_status": "verified",
+          "confidence_score": 0.88,
+          "is_contradicted": false,
+          "contradiction_evidence": null
+        },
+        {
+          "statement": "single codebase, efficient configuration, reduce total code\n4.",
+          "component_type": "benefit",
+          "citations": [],
+          "verification_status": "insufficient_evidence",
+          "confidence_score": 0.0,
+          "is_contradicted": false,
+          "contradiction_evidence": null
+        },
+        {
+          "statement": "ENSURE SAFETY & QUALITY",
+          "component_type": "fact",
+          "citations": [],
+          "verification_status": "insufficient_evidence",
+          "confidence_score": 0.0,
+          "is_contradicted": false,
+          "contradiction_evidence": null
+        },
+        {
+          "statement": "standardized verification, easier compliance, improved testing\n5.",
+          "component_type": "benefit",
+          "citations": [],
+          "verification_status": "insufficient_evidence",
+          "confidence_score": 0.0,
+          "is_contradicted": false,
+          "contradiction_evidence": null
+        },
+        {
+          "statement": "REDUCE DEVELOPMENT COSTS",
+          "component_type": "benefit",
+          "citations": [
+            {
+              "chunk_id": "chunk_002",
+              "chunk_content": "autosar was created to address fragmentation caused by multiple automotive manufacturers having incompatible proprietary software stacks. this standardization enables code reuse and reduces developmen",
+              "confidence_score": 0.89,
+              "semantic_similarity": 0.86,
+              "metadata_domain": "AUTOSAR",
+              "page_ref": "2"
+            },
+            {
+              "chunk_id": "chunk_005",
+              "chunk_content": "autosar improves ecu development by standardizing interfaces and providing reusable components. it reduces complexity and enables efficient scaling for multi-core systems.",
+              "confidence_score": 0.88,
+              "semantic_similarity": 0.85,
+              "metadata_domain": "AUTOSAR",
+              "page_ref": "5"
+            },
+            {
+              "chunk_id": "chunk_003",
+              "chunk_content": "the high costs of platform-specific development and difficulty in sharing components across different vehicle variants were key problems. autosar addresses these through standardized interfaces.",
+              "confidence_score": 0.87,
+              "semantic_similarity": 0.84,
+              "metadata_domain": "AUTOSAR",
+              "page_ref": "3"
+            }
+          ],
+          "verification_status": "verified",
+          "confidence_score": 0.88,
+          "is_contradicted": false,
+          "contradiction_evidence": null
+        },
+        {
+          "statement": "component reuse, shared infrastructure, lower training",
+          "component_type": "fact",
+          "citations": [],
+          "verification_status": "insufficient_evidence",
+          "confidence_score": 0.0,
+          "is_contradicted": false,
+          "contradiction_evidence": null
+        }
+      ],
+      "overall_status": "partial",
+      "quality_score": 0.4509444444444444,
+      "completeness_score": 0.6,
+      "accuracy_score": 0.4166666666666667,
+      "timestamp": "2026-05-27T13:53:23.280591",
+      "quality_gates_passed": {
+        "min_confidence": false,
+        "min_quality_score": false,
+        "min_completeness": true,
+        "no_contradictions": true,
+        "sufficient_evidence": true
+      },
+      "warnings": [
+        "Component 'write once, execute on multiple ECU platforms, min...' has no supporting evidence",
+        "Component 'IMPROVE MAINTAINABILITY...' has no supporting evidence",
+        "Component 'consistent interfaces, easier updates, standardize...' has no supporting evidence",
+        "Component 'single codebase, efficient configuration, reduce t...' has no supporting evidence",
+        "Component 'ENSURE SAFETY & QUALITY...' has no supporting evidence",
+        "Component 'standardized verification, easier compliance, impr...' has no supporting evidence",
+        "Component 'component reuse, shared infrastructure, lower trai...' has no supporting evidence"
+      ],
+      "suggestions": [
+        "Add more specific citations. Current confidence: 0.37",
+        "Review warnings above. Some components may need refinement or additional sources."
+      ]
+    },
+    "improvement": {
+      "quality_delta": -0.40838888888888897,
+      "completeness_delta": 0.0,
+      "components_added": 11
+    }
+  },
+  {
+    "query": "What does AUTOSAR aim to improve in automotive ECUs?",
+    "before": {
+      "query": "What does AUTOSAR aim to improve in automotive ECUs?",
+      "answer_text": "AUTOSAR improves ECU development by standardizing interfaces and providing reusable components that reduce complexity.",
+      "components": [
+        {
+          "statement": "AUTOSAR improves ECU development by standardizing interfaces and providing reusable components that reduce complexity.",
+          "component_type": "benefit",
+          "citations": [
+            {
+              "chunk_id": "chunk_002",
+              "chunk_content": "autosar was created to address fragmentation caused by multiple automotive manufacturers having incompatible proprietary software stacks. this standardization enables code reuse and reduces developmen",
+              "confidence_score": 0.89,
+              "semantic_similarity": 0.86,
+              "metadata_domain": "AUTOSAR",
+              "page_ref": "2"
+            },
+            {
+              "chunk_id": "chunk_005",
+              "chunk_content": "autosar improves ecu development by standardizing interfaces and providing reusable components. it reduces complexity and enables efficient scaling for multi-core systems.",
+              "confidence_score": 0.88,
+              "semantic_similarity": 0.85,
+              "metadata_domain": "AUTOSAR",
+              "page_ref": "5"
+            }
+          ],
+          "verification_status": "verified",
+          "confidence_score": 0.885,
+          "is_contradicted": false,
+          "contradiction_evidence": null
+        }
+      ],
+      "overall_status": "partial",
+      "quality_score": 0.797,
+      "completeness_score": 0.4,
+      "accuracy_score": 1.0,
+      "timestamp": "2026-05-27T13:53:23.281401",
+      "quality_gates_passed": {
+        "min_confidence": true,
+        "min_quality_score": true,
+        "min_completeness": false,
+        "no_contradictions": true,
+        "sufficient_evidence": false
+      },
+      "warnings": [],
+      "suggestions": [
+        "Answer may not fully address all query aspects. Consider expanding coverage."
+      ]
+    },
+    "after": {
+      "query": "What does AUTOSAR aim to improve in automotive ECUs?",
+      "answer_text": "AUTOSAR aims to improve ECUs in:\nSOFTWARE QUALITY - consistent coding standards, improved testing, reduced defects\nPERFORMANCE - efficient software-to-hardware mapping, optimized resources\nSCALABILITY - multi-core support, inter-processor communication\nSAFETY & SECURITY - standardized mechanisms, built-in security, easier certification\nFLEXIBILITY - hardware adaptation, variant management, reduced re-development\nEFFICIENCY - reduced time-to-market, lower costs, component reuse",
+      "components": [
+        {
+          "statement": "AUTOSAR aims to improve ECUs in:",
+          "component_type": "benefit",
+          "citations": [
+            {
+              "chunk_id": "chunk_001",
+              "chunk_content": "autosar is an open and standardized automotive software architecture. it enables software transferability across different ecu platforms. the main goal is to standardize the interface between applicat",
+              "confidence_score": 0.92,
+              "semantic_similarity": 0.88,
+              "metadata_domain": "AUTOSAR",
+              "page_ref": "1"
+            },
+            {
+              "chunk_id": "chunk_002",
+              "chunk_content": "autosar was created to address fragmentation caused by multiple automotive manufacturers having incompatible proprietary software stacks. this standardization enables code reuse and reduces developmen",
+              "confidence_score": 0.89,
+              "semantic_similarity": 0.86,
+              "metadata_domain": "AUTOSAR",
+              "page_ref": "2"
+            }
+          ],
+          "verification_status": "verified",
+          "confidence_score": 0.905,
+          "is_contradicted": false,
+          "contradiction_evidence": null
+        },
+        {
+          "statement": "SOFTWARE QUALITY",
+          "component_type": "fact",
+          "citations": [
+            {
+              "chunk_id": "chunk_001",
+              "chunk_content": "autosar is an open and standardized automotive software architecture. it enables software transferability across different ecu platforms. the main goal is to standardize the interface between applicat",
+              "confidence_score": 0.92,
+              "semantic_similarity": 0.88,
+              "metadata_domain": "AUTOSAR",
+              "page_ref": "1"
+            },
+            {
+              "chunk_id": "chunk_002",
+              "chunk_content": "autosar was created to address fragmentation caused by multiple automotive manufacturers having incompatible proprietary software stacks. this standardization enables code reuse and reduces developmen",
+              "confidence_score": 0.89,
+              "semantic_similarity": 0.86,
+              "metadata_domain": "AUTOSAR",
+              "page_ref": "2"
+            },
+            {
+              "chunk_id": "chunk_004",
+              "chunk_content": "a standardized software architecture enables portability and reduces development time. it improves quality across the automotive industry by establishing common practices and verification methods.",
+              "confidence_score": 0.85,
+              "semantic_similarity": 0.81,
+              "metadata_domain": "AUTOSAR",
+              "page_ref": "4"
+            }
+          ],
+          "verification_status": "verified",
+          "confidence_score": 0.8866666666666667,
+          "is_contradicted": false,
+          "contradiction_evidence": null
+        },
+        {
+          "statement": "consistent coding standards, improved testing, reduced defects\nPERFORMANCE",
+          "component_type": "definition",
+          "citations": [],
+          "verification_status": "insufficient_evidence",
+          "confidence_score": 0.0,
+          "is_contradicted": false,
+          "contradiction_evidence": null
+        },
+        {
+          "statement": "efficient software",
+          "component_type": "fact",
+          "citations": [
+            {
+              "chunk_id": "chunk_001",
+              "chunk_content": "autosar is an open and standardized automotive software architecture. it enables software transferability across different ecu platforms. the main goal is to standardize the interface between applicat",
+              "confidence_score": 0.92,
+              "semantic_similarity": 0.88,
+              "metadata_domain": "AUTOSAR",
+              "page_ref": "1"
+            },
+            {
+              "chunk_id": "chunk_002",
+              "chunk_content": "autosar was created to address fragmentation caused by multiple automotive manufacturers having incompatible proprietary software stacks. this standardization enables code reuse and reduces developmen",
+              "confidence_score": 0.89,
+              "semantic_similarity": 0.86,
+              "metadata_domain": "AUTOSAR",
+              "page_ref": "2"
+            },
+            {
+              "chunk_id": "chunk_005",
+              "chunk_content": "autosar improves ecu development by standardizing interfaces and providing reusable components. it reduces complexity and enables efficient scaling for multi-core systems.",
+              "confidence_score": 0.88,
+              "semantic_similarity": 0.85,
+              "metadata_domain": "AUTOSAR",
+              "page_ref": "5"
+            }
+          ],
+          "verification_status": "verified",
+          "confidence_score": 0.8966666666666666,
+          "is_contradicted": false,
+          "contradiction_evidence": null
+        },
+        {
+          "statement": "hardware mapping, optimized resources\nSCALABILITY",
+          "component_type": "fact",
+          "citations": [],
+          "verification_status": "insufficient_evidence",
+          "confidence_score": 0.0,
+          "is_contradicted": false,
+          "contradiction_evidence": null
+        },
+        {
+          "statement": "core support, inter",
+          "component_type": "fact",
+          "citations": [],
+          "verification_status": "insufficient_evidence",
+          "confidence_score": 0.0,
+          "is_contradicted": false,
+          "contradiction_evidence": null
+        },
+        {
+          "statement": "processor communication\nSAFETY & SECURITY",
+          "component_type": "fact",
+          "citations": [],
+          "verification_status": "insufficient_evidence",
+          "confidence_score": 0.0,
+          "is_contradicted": false,
+          "contradiction_evidence": null
+        },
+        {
+          "statement": "standardized mechanisms, built",
+          "component_type": "definition",
+          "citations": [
+            {
+              "chunk_id": "chunk_001",
+              "chunk_content": "autosar is an open and standardized automotive software architecture. it enables software transferability across different ecu platforms. the main goal is to standardize the interface between applicat",
+              "confidence_score": 0.92,
+              "semantic_similarity": 0.88,
+              "metadata_domain": "AUTOSAR",
+              "page_ref": "1"
+            },
+            {
+              "chunk_id": "chunk_003",
+              "chunk_content": "the high costs of platform-specific development and difficulty in sharing components across different vehicle variants were key problems. autosar addresses these through standardized interfaces.",
+              "confidence_score": 0.87,
+              "semantic_similarity": 0.84,
+              "metadata_domain": "AUTOSAR",
+              "page_ref": "3"
+            },
+            {
+              "chunk_id": "chunk_004",
+              "chunk_content": "a standardized software architecture enables portability and reduces development time. it improves quality across the automotive industry by establishing common practices and verification methods.",
+              "confidence_score": 0.85,
+              "semantic_similarity": 0.81,
+              "metadata_domain": "AUTOSAR",
+              "page_ref": "4"
+            }
+          ],
+          "verification_status": "verified",
+          "confidence_score": 0.88,
+          "is_contradicted": false,
+          "contradiction_evidence": null
+        },
+        {
+          "statement": "in security, easier certification\nFLEXIBILITY",
+          "component_type": "fact",
+          "citations": [],
+          "verification_status": "insufficient_evidence",
+          "confidence_score": 0.0,
+          "is_contradicted": false,
+          "contradiction_evidence": null
+        },
+        {
+          "statement": "hardware adaptation, variant management, reduced re",
+          "component_type": "benefit",
+          "citations": [],
+          "verification_status": "insufficient_evidence",
+          "confidence_score": 0.0,
+          "is_contradicted": false,
+          "contradiction_evidence": null
+        },
+        {
+          "statement": "development\nEFFICIENCY",
+          "component_type": "fact",
+          "citations": [
+            {
+              "chunk_id": "chunk_002",
+              "chunk_content": "autosar was created to address fragmentation caused by multiple automotive manufacturers having incompatible proprietary software stacks. this standardization enables code reuse and reduces developmen",
+              "confidence_score": 0.89,
+              "semantic_similarity": 0.86,
+              "metadata_domain": "AUTOSAR",
+              "page_ref": "2"
+            },
+            {
+              "chunk_id": "chunk_005",
+              "chunk_content": "autosar improves ecu development by standardizing interfaces and providing reusable components. it reduces complexity and enables efficient scaling for multi-core systems.",
+              "confidence_score": 0.88,
+              "semantic_similarity": 0.85,
+              "metadata_domain": "AUTOSAR",
+              "page_ref": "5"
+            },
+            {
+              "chunk_id": "chunk_003",
+              "chunk_content": "the high costs of platform-specific development and difficulty in sharing components across different vehicle variants were key problems. autosar addresses these through standardized interfaces.",
+              "confidence_score": 0.87,
+              "semantic_similarity": 0.84,
+              "metadata_domain": "AUTOSAR",
+              "page_ref": "3"
+            }
+          ],
+          "verification_status": "verified",
+          "confidence_score": 0.88,
+          "is_contradicted": false,
+          "contradiction_evidence": null
+        },
+        {
+          "statement": "reduced time",
+          "component_type": "benefit",
+          "citations": [],
+          "verification_status": "insufficient_evidence",
+          "confidence_score": 0.0,
+          "is_contradicted": false,
+          "contradiction_evidence": null
+        },
+        {
+          "statement": "market, lower costs, component reuse",
+          "component_type": "fact",
+          "citations": [],
+          "verification_status": "insufficient_evidence",
+          "confidence_score": 0.0,
+          "is_contradicted": false,
+          "contradiction_evidence": null
+        }
+      ],
+      "overall_status": "partial",
+      "quality_score": 0.4222820512820513,
+      "completeness_score": 0.6,
+      "accuracy_score": 0.38461538461538464,
+      "timestamp": "2026-05-27T13:53:23.281567",
+      "quality_gates_passed": {
+        "min_confidence": false,
+        "min_quality_score": false,
+        "min_completeness": true,
+        "no_contradictions": true,
+        "sufficient_evidence": true
+      },
+      "warnings": [
+        "Component 'consistent coding standards, improved testing, red...' has no supporting evidence",
+        "Component 'hardware mapping, optimized resources\nSCALABILITY...' has no supporting evidence",
+        "Component 'core support, inter...' has no supporting evidence",
+        "Component 'processor communication\nSAFETY & SECURITY...' has no supporting evidence",
+        "Component 'in security, easier certification\nFLEXIBILITY...' has no supporting evidence",
+        "Component 'hardware adaptation, variant management, reduced r...' has no supporting evidence",
+        "Component 'reduced time...' has no supporting evidence",
+        "Component 'market, lower costs, component reuse...' has no supporting evidence"
+      ],
+      "suggestions": [
+        "Add more specific citations. Current confidence: 0.34",
+        "Review warnings above. Some components may need refinement or additional sources."
+      ]
+    },
+    "improvement": {
+      "quality_delta": -0.3747179487179487,
+      "completeness_delta": 0.19999999999999996,
+      "components_added": 12
+    }
+  }
+]

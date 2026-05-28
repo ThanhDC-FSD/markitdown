@@ -1,0 +1,25 @@
+{
+  "request_id": "diag_inline_case_20260528042042_9c67dba1",
+  "generated_at": "2026-05-28T04:20:42.844266+00:00",
+  "case": {
+    "name": "inline_case",
+    "query": "Why are internet based clients important in the Cloud Age?",
+    "mode": "both",
+    "top_k": 5,
+    "rerank_top_k": 3,
+    "model": null,
+    "request_id": null,
+    "expected_failure_class": null,
+    "notes": null,
+    "answer_policy": null,
+    "generation_options": null,
+    "context_chunks": null
+  },
+  "rag_request": {
+    "query": "Why are internet based clients important in the Cloud Age?",
+    "top_k": 5,
+    "rerank_top_k": 3,
+    "request_id": "diag_inline_case_20260528042042_9c67dba1"
+  },
+  "copilot_request": null
+}
