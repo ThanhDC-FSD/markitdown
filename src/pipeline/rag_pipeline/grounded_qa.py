@@ -15,7 +15,7 @@ from uuid import uuid4
 
 import requests
 
-from ...core.config import (
+from core.config import (
     COPILOT_API_BASE_URL,
     COPILOT_API_RETRY_BACKOFF_SECONDS,
     COPILOT_API_RETRY_COUNT,

@@ -19,7 +19,8 @@ pip install -r requirements.txt 2>&1 | tail -5
 # Step 2: Create sample documents
 echo ""
 echo "[2] Creating sample documents..."
-python crawler.py --mode sample --output ./sample_docs 2>&1 | tail -3
+export PYTHONPATH="$(pwd)"
+python -m core.crawler --mode sample --output ./sample_docs 2>&1 | tail -3
 
 # Step 3: Start FastAPI server
 echo ""
@@ -30,4 +31,5 @@ echo ""
 echo "Press Ctrl+C to stop the server"
 echo ""
 
-python -m uvicorn api:app --reload --host 0.0.0.0 --port 8000
+export PYTHONPATH="$(pwd)"
+python -m uvicorn core.api:app --reload --host 0.0.0.0 --port 8000

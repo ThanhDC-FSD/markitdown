@@ -88,7 +88,7 @@ warnings.filterwarnings("ignore", message=".*Couldn't find ffmpeg or avconv.*", 
 # Suppress urllib3 SSL warnings
 warnings.filterwarnings("ignore", category=urllib3.exceptions.InsecureRequestWarning)
 
-from .config import (
+from core.config import (
     setup_logger,
     API_HOST,
     API_PORT,

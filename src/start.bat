@@ -53,7 +53,8 @@ echo     [OK] Dependencies are present
 REM Step 2: Create sample documents
 echo.
 echo [2] Creating sample documents...
-python crawler.py --mode sample --output ./sample_docs
+set "PYTHONPATH=%SCRIPT_DIR%"
+python -m core.crawler --mode sample --output ./sample_docs
 if %errorlevel% equ 0 (
     echo     [OK] Sample documents created
 ) else (
@@ -72,6 +73,7 @@ echo.
 echo     Press Ctrl+C to stop the server
 echo.
 
-python -m uvicorn api:app --reload --host 0.0.0.0 --port 8001
+set "PYTHONPATH=%SCRIPT_DIR%"
+python -m uvicorn core.api:app --reload --host 0.0.0.0 --port 8001
 
 pause
