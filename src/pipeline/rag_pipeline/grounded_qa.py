@@ -85,6 +85,49 @@ def _is_positive_int(value: Any) -> bool:
     return isinstance(value, int) and not isinstance(value, bool) and value > 0
 
 
+# ============================================================================
+# PRODUCTION-SAFE ANSWER NORMALIZATION
+# Enforces invariant: if generation executed successfully, answer is never empty
+# ============================================================================
+
+FALLBACK_ABSTENTION_MESSAGE = (
+    "The retrieved context does not contain enough grounded information to answer this question."
+)
+
+
+def _normalize_final_answer(result: GroundedQAResult) -> None:
+    """
+    MUTATING operation: Enforce production safety invariant for final answers.
+    
+    Invariant:
+    - If generation_executed == True, final answer must never be empty.
+    - If abstained == True and answer is empty, populate with abstention_reason or fallback.
+    - Treat None, empty string, and whitespace-only strings as empty.
+    
+    This function DOES NOT convert abstention into hallucinated content.
+    Abstention answers remain grounded as refusal/insufficiency statements.
+    
+    Args:
+        result: GroundedQAResult to normalize IN-PLACE
+    """
+    # Check if answer is empty (handles None, "", and whitespace-only)
+    answer_is_empty = not (result.answer and result.answer.strip())
+    
+    # Only normalize if generation was executed but answer came out empty
+    if result.generation_executed and answer_is_empty:
+        if result.abstained:
+            # Abstention case: populate answer with reason or fallback
+            reason = (
+                result.abstention_reason and result.abstention_reason.strip()
+            ) or FALLBACK_ABSTENTION_MESSAGE
+            result.answer = reason
+        else:
+            # Non-abstention case with empty answer: use fallback for safety
+            # This should be rare (already caught in _normalize_successful_response),
+            # but we enforce it here as last line of defense
+            result.answer = "Answer generation failed: no output received."
+
+
 def _normalize_query(query: Any) -> Tuple[Optional[str], List[str]]:
     errors: List[str] = []
     if not isinstance(query, str):
@@ -827,7 +870,7 @@ def _normalize_successful_response(
         generation_failure_reason=generation_failure_reason,
     )
 
-    return GroundedQAResult(
+    result = GroundedQAResult(
         request_id=response_data.get("request_id") or request_id,
         query=response_data.get("query") or query,
         answer=answer,
@@ -867,6 +910,11 @@ def _normalize_successful_response(
         gateway_http_status=gateway_http_status,
         provider_http_status=provider_http_status,
     )
+    
+    # ENFORCE PRODUCTION SAFETY INVARIANT: never return empty answer if generation executed
+    _normalize_final_answer(result)
+    
+    return result
 
 
 class GroundedQAClient:
@@ -1197,6 +1245,9 @@ class GroundedQAClient:
                 "message": "empty_answer",
                 "detail": None,
             }
+
+        # ENFORCE PRODUCTION SAFETY INVARIANT: never return empty answer if generation executed
+        _normalize_final_answer(normalized)
 
         return normalized
 

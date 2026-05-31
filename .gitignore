@@ -187,3 +187,11 @@ cython_debug/
 src/.DS_Store
 .DS_Store
 .cursorrules
+src/.torch_cache/
+src/diagnostics/grounded_qa/
+TEST*.md
+chroma_db_test/
+diagnostics/
+expected_answer_contracts_*.json
+test_chroma_clean_*/
+expected_answer_definitions.json

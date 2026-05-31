@@ -103,6 +103,7 @@ class DiagnosticBundle:
     classifications: List[str] = field(default_factory=list)
     dominant_failure_cause: str = "runtime_failure"
     next_fix_target: str = "investigate runtime failure"
+    stage_failure_details: Dict[str, Any] = field(default_factory=dict)
     diagnosis_summary: str = ""
     notes: List[str] = field(default_factory=list)
 
@@ -248,6 +249,16 @@ def build_headers(request_id: str) -> Dict[str, str]:
     }
 
 
+def is_local_endpoint(url: str) -> bool:
+    lower = url.lower()
+    return (
+        lower.startswith("http://127.0.0.1")
+        or lower.startswith("http://localhost")
+        or lower.startswith("https://127.0.0.1")
+        or lower.startswith("https://localhost")
+    )
+
+
 def post_json(label: str, url: str, request_id: str, payload: Dict[str, Any], timeout_seconds: float) -> HttpCallArtifact:
     request_snapshot = RequestSnapshot(
         timestamp=utc_now(),
@@ -258,7 +269,11 @@ def post_json(label: str, url: str, request_id: str, payload: Dict[str, Any], ti
     )
     response_timestamp = utc_now()
     try:
-        response = requests.post(url, json=payload, headers=request_snapshot.headers, timeout=timeout_seconds)
+        session = requests.Session()
+        # Local diagnostics should not inherit corporate proxy settings.
+        if is_local_endpoint(url):
+            session.trust_env = False
+        response = session.post(url, json=payload, headers=request_snapshot.headers, timeout=timeout_seconds)
         status_code = response.status_code
         response_headers = dict(response.headers)
         raw_text = response.text
@@ -771,13 +786,45 @@ def make_summary(bundle: DiagnosticBundle) -> str:
         f"- rag_runtime_generation_executed: {rag_runtime.get('generation_executed') if isinstance(rag_runtime, dict) else None}",
         f"- rag_runtime_generation_failure_reason: {rag_runtime.get('generation_failure_reason') if isinstance(rag_runtime, dict) else None}",
         "",
+        f"## Answer Normalization Diagnostics",
+    ]
+    
+    # Add empty answer detection
+    rag_answer = (rag_json or {}).get("answer") if isinstance(rag_json, dict) else None
+    rag_abstained = (rag_json or {}).get("abstained") if isinstance(rag_json, dict) else None
+    rag_abstention_reason = (rag_json or {}).get("abstention_reason") if isinstance(rag_json, dict) else None
+    rag_generation_executed = rag_runtime.get("generation_executed") if isinstance(rag_runtime, dict) else None
+    
+    rag_answer_is_empty = not (rag_answer and isinstance(rag_answer, str) and rag_answer.strip())
+    
+    lines.extend([
+        f"- rag_answer_empty: {rag_answer_is_empty}",
+        f"- rag_answer_length: {len(rag_answer) if isinstance(rag_answer, str) else 'N/A'}",
+        f"- rag_abstained: {rag_abstained}",
+        f"- rag_abstention_reason: {rag_abstention_reason or 'N/A'}",
+        f"- rag_generation_executed: {rag_generation_executed}",
+    ])
+    
+    # Critical: Check for the bug condition
+    if rag_generation_executed and rag_answer_is_empty:
+        lines.append(f"- CRITICAL_ISSUE: generation_executed=true but answer is empty!")
+        if rag_abstained:
+            lines.append(f"  ⚠️  INVARIANT VIOLATION: abstained=true with empty answer and generation_executed=true")
+            lines.append(f"      → Fix applied in _normalize_final_answer() should prevent this")
+        else:
+            lines.append(f"  ⚠️  INVARIANT VIOLATION: non-abstention with empty answer and generation_executed=true")
+    else:
+        lines.append(f"- empty_answer_invariant: ✓ OK")
+    
+    lines.extend([
+        "",
         f"## Probable Failure Classification",
         f"- dominant_failure_cause: {bundle.dominant_failure_cause}",
         f"- all_classifications: {bundle.classifications}",
         f"- next_recommended_fix_target: {bundle.next_fix_target}",
         "",
         f"## Special Pattern Detection",
-    ]
+    ])
 
     if copilot_error == "RESPONSE_SCHEMA_MISMATCH" or copilot_field == "grounding_summary":
         lines.extend(

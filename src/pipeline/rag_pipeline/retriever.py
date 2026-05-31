@@ -44,7 +44,7 @@ class Retriever:
         embeddings: Optional[List[List[float]]] = None,
         metadatas: Optional[List[dict]] = None,
         ids: Optional[List[str]] = None,
-    ) -> None:
+    ) -> int:
         """
         Add documents to the vector store.
 
@@ -53,9 +53,11 @@ class Retriever:
             embeddings: Optional list of pre-computed embeddings. If provided, ChromaDB won't try to download models.
             metadatas: Optional list of metadata dictionaries
             ids: Optional list of unique IDs for documents
+        Returns:
+            Number of newly inserted documents.
         """
         if not documents:
-            return
+            return 0
 
         # Generate IDs if not provided
         if ids is None:
@@ -65,29 +67,72 @@ class Retriever:
         if metadatas is None:
             metadatas = [{} for _ in documents]
 
-        # Add to collection
+        # Dedupe IDs before add() to avoid repeated "existing embedding ID" warnings.
+        existing_ids = self.get_existing_ids(ids)
+
+        keep_indexes = [i for i, doc_id in enumerate(ids) if doc_id not in existing_ids]
+        skipped = len(ids) - len(keep_indexes)
+
+        if not keep_indexes:
+            logger.info(f"Skipped add: all {len(ids)} IDs already exist in ChromaDB")
+            return 0
+
+        filtered_ids = [ids[i] for i in keep_indexes]
+        filtered_documents = [documents[i] for i in keep_indexes]
+        filtered_metadatas = [metadatas[i] for i in keep_indexes]
+        filtered_embeddings = [embeddings[i] for i in keep_indexes] if embeddings is not None else None
+
+        # Add filtered documents to collection
         try:
-            logger.info(f"Adding {len(documents)} documents to ChromaDB...")
+            logger.info(
+                f"Adding {len(filtered_documents)} documents to ChromaDB "
+                f"(skipped {skipped} duplicates)..."
+            )
             
-            if embeddings is not None:
+            if filtered_embeddings is not None:
                 # If embeddings provided, add them to prevent ChromaDB from downloading models
                 self.collection.add(
-                    ids=ids,
-                    documents=documents,
-                    embeddings=embeddings,
-                    metadatas=metadatas,
+                    ids=filtered_ids,
+                    documents=filtered_documents,
+                    embeddings=filtered_embeddings,
+                    metadatas=filtered_metadatas,
                 )
             else:
                 # Without embeddings, ChromaDB will try to auto-embed (may fail with SSL errors)
                 self.collection.add(
-                    ids=ids,
-                    documents=documents,
-                    metadatas=metadatas,
+                    ids=filtered_ids,
+                    documents=filtered_documents,
+                    metadatas=filtered_metadatas,
                 )
-            logger.info(f"Successfully added {len(documents)} documents")
+            logger.info(f"Successfully added {len(filtered_documents)} documents")
+            return len(filtered_documents)
         except Exception as e:
             logger.error(f"Error adding documents to ChromaDB: {str(e)}", exc_info=True)
             raise
+
+    def get_existing_ids(self, ids: List[str]) -> set[str]:
+        """Return the subset of IDs that already exist in ChromaDB."""
+        if not ids:
+            return set()
+        try:
+            existing = self.collection.get(ids=ids, include=[])
+            raw_ids = existing.get("ids", []) if isinstance(existing, dict) else []
+            return {item for item in raw_ids if isinstance(item, str)}
+        except Exception as e:
+            logger.warning(f"Could not pre-check existing IDs; returning empty set: {e}")
+            return set()
+
+    def count_by_doc_id(self, doc_id: str) -> int:
+        """Count chunks already stored for a document ID."""
+        if not doc_id:
+            return 0
+        try:
+            existing = self.collection.get(where={"doc_id": doc_id}, include=[])
+            raw_ids = existing.get("ids", []) if isinstance(existing, dict) else []
+            return len([item for item in raw_ids if isinstance(item, str)])
+        except Exception as e:
+            logger.warning(f"Could not count chunks for doc_id={doc_id}: {e}")
+            return 0
 
     def retrieve(
         self,

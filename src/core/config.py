@@ -15,7 +15,7 @@ PROJECT_ROOT = Path(__file__).parent.parent
 SRC_DIR = Path(__file__).parent
 LOGS_DIR = PROJECT_ROOT / "logs"
 DATA_DIR = PROJECT_ROOT / "data"
-CHROMA_DB_DIR = PROJECT_ROOT / "chroma_db"
+CHROMA_DB_DIR = Path(os.getenv("CHROMA_DB_DIR", str(PROJECT_ROOT / "chroma_db")))
 
 # Create directories if they don't exist
 LOGS_DIR.mkdir(exist_ok=True)
@@ -122,7 +122,7 @@ DEFAULT_GROUNDED_ANSWER_POLICY = _env_json(
         "abstain_if_insufficient": True,
         "return_citations": True,
         "max_answer_sentences": 4,
-        "forbidden_topics": ["GitHub", "repositories", "version control"],
+        "forbidden_topics": [],
     },
 )
 DEFAULT_GROUNDED_GENERATION_OPTIONS = _env_json(
